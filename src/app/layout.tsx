@@ -20,10 +20,29 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://omkarvchalke.github.io";
+const DESCRIPTION =
+  "I build scalable software, intelligent data platforms, and AI-powered applications.";
+
 export const metadata: Metadata = {
-  title: "Omkar Vilas Chalke",
-  description:
-    "I build scalable software, intelligent data platforms, and AI-powered applications.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Omkar Vilas Chalke",
+    template: "%s — Omkar Vilas Chalke",
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    title: "Omkar Vilas Chalke",
+    description: DESCRIPTION,
+    siteName: "Omkar Vilas Chalke",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Omkar Vilas Chalke",
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +57,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SiteNav />
-          {children}
+          <main>{children}</main>
           <SiteFooter />
         </ThemeProvider>
       </body>

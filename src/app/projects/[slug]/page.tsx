@@ -1,5 +1,8 @@
-import { PagePlaceholder } from "@/components/page-placeholder";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { projects } from "@/content";
+import { PageContainer } from "@/components/page-container";
+import { ProjectDetail } from "@/features/projects/project-detail";
 
 // Static export (see next.config.ts) requires every dynamic route's params
 // enumerated at build time — this stays wired to the content graph so it
@@ -8,12 +11,32 @@ export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export default function Page() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+  return {
+    title: project.name,
+    description: project.summary,
+  };
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) notFound();
+
   return (
-    <PagePlaceholder
-      eyebrow="Project"
-      title="Full case study."
-      phase="Phase 5"
-    />
+    <PageContainer>
+      <ProjectDetail project={project} />
+    </PageContainer>
   );
 }

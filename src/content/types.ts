@@ -37,6 +37,37 @@ export interface Metric {
   value: string;
 }
 
+export type DiagramNodeKind =
+  | "client"
+  | "api"
+  | "service"
+  | "queue"
+  | "database"
+  | "cache"
+  | "cloud"
+  | "external";
+
+export interface DiagramNode {
+  id: string;
+  label: string;
+  kind: DiagramNodeKind;
+  description: string;
+  /** 0-100 grid position within the gallery canvas. */
+  x: number;
+  y: number;
+}
+
+export interface DiagramEdge {
+  from: string;
+  to: string;
+  label?: string;
+}
+
+export interface ArchitectureDiagram {
+  nodes: DiagramNode[];
+  edges: DiagramEdge[];
+}
+
 /**
  * Fixed case-study template (Phase 1 §5.4). Keeping every project
  * structurally identical is what lets graph relations (tech ↔ project ↔
@@ -61,6 +92,7 @@ export interface Project {
   demoUrl?: string;
   githubUrl?: string;
   hasArchitectureDiagram: boolean;
+  diagram?: ArchitectureDiagram;
   disciplines: Discipline[];
   relatedExperienceSlugs?: string[];
   /** Full case study (all fields authored) vs. a lighter index entry — see
@@ -97,4 +129,12 @@ export interface Publication {
   pdfUrl?: string;
   relatedProjectSlug?: string;
   images?: string[];
+}
+
+export interface Achievement {
+  slug: string;
+  title: string;
+  description: string;
+  date: string; // ISO yyyy-mm
+  url?: string;
 }

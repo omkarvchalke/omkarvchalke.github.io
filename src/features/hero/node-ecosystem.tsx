@@ -186,7 +186,7 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
       >
         <span
           className={cn(
-            "text-muted-foreground font-mono text-[11px] transition-opacity duration-150",
+            "text-muted-foreground font-mono text-[11px] transition-opacity duration-200",
             activeNode ? "opacity-100" : "opacity-0"
           )}
         >

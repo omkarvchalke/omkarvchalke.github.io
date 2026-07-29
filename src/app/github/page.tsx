@@ -1,11 +1,23 @@
-import { PagePlaceholder } from "@/components/page-placeholder";
+import type { Metadata } from "next";
+import { PageContainer } from "@/components/page-container";
+import { SectionHeader } from "@/components/section-header";
+import { GitHubDashboard } from "@/features/github/github-dashboard";
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: "GitHub Activity",
+  description:
+    "Live contribution activity, pinned repositories, and commit history.",
+};
+
+export default function GitHubPage() {
   return (
-    <PagePlaceholder
-      eyebrow="GitHub Activity"
-      title="Contribution graph, pinned repos, commit timeline."
-      phase="Phase 5"
-    />
+    <PageContainer>
+      <SectionHeader
+        eyebrow="GitHub Activity"
+        title="Proof of work, not a highlight reel."
+        description="Pulled live from the public GitHub API, client-side — this page has no backend."
+      />
+      <GitHubDashboard />
+    </PageContainer>
   );
 }

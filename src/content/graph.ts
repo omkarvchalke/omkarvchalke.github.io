@@ -67,3 +67,28 @@ export function projectsByDiscipline(discipline: Discipline) {
 export function experienceByDiscipline(discipline: Discipline) {
   return experience.filter((e) => e.disciplines.includes(discipline));
 }
+
+/**
+ * Powers the Technology Ecosystem graph: which technologies actually get
+ * used together, computed from real project/experience tech stacks rather
+ * than curated by hand (unlike the hero's discipline adjacency, this isn't
+ * editorial — it's derived from the data).
+ */
+export function technologyCooccurrence(): [string, string][] {
+  const pairs = new Set<string>();
+  const result: [string, string][] = [];
+  const addFromGroup = (slugs: string[]) => {
+    for (let i = 0; i < slugs.length; i++) {
+      for (let j = i + 1; j < slugs.length; j++) {
+        const key = [slugs[i], slugs[j]].sort().join("::");
+        if (!pairs.has(key)) {
+          pairs.add(key);
+          result.push([slugs[i], slugs[j]]);
+        }
+      }
+    }
+  };
+  projects.forEach((p) => addFromGroup(p.techSlugs));
+  experience.forEach((e) => addFromGroup(e.techSlugs));
+  return result;
+}
