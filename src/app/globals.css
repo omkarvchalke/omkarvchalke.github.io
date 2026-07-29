@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Phase 2: Geist drives structure (default UI face), Inter is opt-in for
+     long-form reading via `font-body`, Geist Mono carries data/labels. */
+  --font-sans: var(--font-geist-sans);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-copper: var(--copper);
+  --color-copper-soft: var(--copper-soft);
+  --color-copper-foreground: var(--copper-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Phase 2 palette. `.dark` is the primary, designed-first theme (per the
+ * brief's "dark mode first") and is applied by default via `class="dark"`
+ * in RootLayout, driven by next-themes (defaultTheme="dark", enableSystem).
+ * :root below is the light fallback for users/system preference that opts
+ * out — same token contract, not a lower-effort inversion.
+ */
+:root {
+  --background: #f6f2ea;
+  --foreground: #1b1a17;
+  --card: #fcfaf6;
+  --card-foreground: #1b1a17;
+  --popover: #ffffff;
+  --popover-foreground: #1b1a17;
+  --primary: #1f8f5f;
+  --primary-foreground: #06110c;
+  --secondary: #ffffff;
+  --secondary-foreground: #1b1a17;
+  --muted: #fcfaf6;
+  --muted-foreground: #57534a;
+  --accent: rgba(31, 143, 95, 0.1);
+  --accent-foreground: #1b1a17;
+  --copper: #a15f2c;
+  --copper-soft: rgba(161, 95, 44, 0.12);
+  --copper-foreground: #1b1a17;
+  --destructive: #a34633;
+  --destructive-foreground: #fbf3ec;
+  --border: rgba(23, 21, 17, 0.1);
+  --input: rgba(23, 21, 17, 0.1);
+  --ring: #1f8f5f;
+  --chart-1: #1f8f5f;
+  --chart-2: #a15f2c;
+  --chart-3: #5fa98a;
+  --chart-4: #8c877a;
+  --chart-5: #c79868;
+  --radius: 0.375rem;
+  --sidebar: #fcfaf6;
+  --sidebar-foreground: #1b1a17;
+  --sidebar-primary: #1f8f5f;
+  --sidebar-primary-foreground: #06110c;
+  --sidebar-accent: rgba(31, 143, 95, 0.1);
+  --sidebar-accent-foreground: #1b1a17;
+  --sidebar-border: rgba(23, 21, 17, 0.1);
+  --sidebar-ring: #1f8f5f;
+}
+
+.dark {
+  --background: #0a0b0c;
+  --foreground: #f4efe6;
+  --card: #141619;
+  --card-foreground: #f4efe6;
+  --popover: #1c1f22;
+  --popover-foreground: #f4efe6;
+  --primary: #34a876;
+  --primary-foreground: #06110c;
+  --secondary: #1c1f22;
+  --secondary-foreground: #f4efe6;
+  --muted: #141619;
+  --muted-foreground: #b7b0a2;
+  --accent: rgba(52, 168, 118, 0.14);
+  --accent-foreground: #f4efe6;
+  --copper: #c58347;
+  --copper-soft: rgba(197, 131, 71, 0.14);
+  --copper-foreground: #f4efe6;
+  --destructive: #c56a54;
+  --destructive-foreground: #fbf3ec;
+  --border: rgba(244, 239, 230, 0.08);
+  --input: rgba(244, 239, 230, 0.08);
+  --ring: #34a876;
+  --chart-1: #34a876;
+  --chart-2: #c58347;
+  --chart-3: #6fc9a2;
+  --chart-4: #726c60;
+  --chart-5: #dda36c;
+  --sidebar: #141619;
+  --sidebar-foreground: #f4efe6;
+  --sidebar-primary: #34a876;
+  --sidebar-primary-foreground: #06110c;
+  --sidebar-accent: rgba(52, 168, 118, 0.14);
+  --sidebar-accent-foreground: #f4efe6;
+  --sidebar-border: rgba(244, 239, 230, 0.08);
+  --sidebar-ring: #34a876;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--foreground) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--foreground) 5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size:
+      100% 32px,
+      32px 100%;
+  }
+  html {
+    @apply font-sans;
+  }
+}
