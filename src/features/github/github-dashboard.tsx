@@ -5,6 +5,7 @@ import { GitFork, Star, Users } from "lucide-react";
 import { useGitHubData, type GitHubEvent } from "./use-github-data";
 import { GitHubIcon } from "@/components/brand-icons";
 import { Reveal } from "@/components/reveal";
+import { useCountUp } from "@/lib/use-count-up";
 
 const USERNAME = "omkarvchalke";
 const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
@@ -41,13 +42,16 @@ function describeEvent(event: GitHubEvent): string {
   }
 }
 
-function StatTile({ label, value }: { label: string; value: string | number }) {
+function StatTile({ label, value }: { label: string; value: number }) {
+  const displayed = useCountUp(value);
   return (
-    <div className="border-border bg-card rounded-lg border p-4">
+    <div className="surface-card border-border rounded-lg border p-4">
       <span className="text-muted-foreground font-mono text-[10px] tracking-[0.08em] uppercase">
         {label}
       </span>
-      <div className="mt-1 font-mono text-2xl tabular-nums">{value}</div>
+      <div className="text-primary mt-1 font-mono text-2xl tabular-nums [text-shadow:0_0_20px_color-mix(in_srgb,var(--primary)_45%,transparent)]">
+        {displayed}
+      </div>
     </div>
   );
 }
@@ -136,7 +140,7 @@ export function GitHubDashboard() {
             href={user.html_url}
             target="_blank"
             rel="noreferrer noopener"
-            className="border-border hover:border-primary hover:text-primary ml-auto inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm"
+            className="border-border hover:border-primary hover:text-primary hover:bg-primary/5 ml-auto inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
           >
             <GitHubIcon className="size-4" />
             Follow
@@ -189,7 +193,7 @@ export function GitHubDashboard() {
                   <span className="w-28 shrink-0 text-sm">{lang.name}</span>
                   <div className="bg-border h-1.5 flex-1 overflow-hidden rounded-full">
                     <div
-                      className="bg-primary h-full rounded-full"
+                      className="from-copper to-primary h-full rounded-full bg-gradient-to-r shadow-[0_0_10px_-1px_var(--primary)] transition-[width] duration-700 ease-out"
                       style={{ width: `${lang.pct}%` }}
                     />
                   </div>
@@ -215,7 +219,7 @@ export function GitHubDashboard() {
                 href={repo.html_url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="border-border bg-card hover:border-primary flex flex-col gap-2 rounded-lg border p-5 transition-colors"
+                className="surface-card border-border flex flex-col gap-2 rounded-lg border p-5"
               >
                 <h3 className="font-medium">{repo.name}</h3>
                 <p className="text-muted-foreground line-clamp-2 flex-1 text-sm">
@@ -244,7 +248,7 @@ export function GitHubDashboard() {
             <h2 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
               Recent activity
             </h2>
-            <ul className="divide-border border-border bg-card flex flex-col divide-y rounded-lg border">
+            <ul className="divide-border surface-panel border-border flex flex-col divide-y rounded-lg border">
               {derived.recentEvents.map((event) => (
                 <li
                   key={event.id}

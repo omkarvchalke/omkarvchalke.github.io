@@ -29,12 +29,13 @@ export default function PublicationsPage() {
               <Reveal key={pub.slug} delay={i * 60}>
                 <Link
                   href={`/publications/${pub.slug}`}
-                  className="group hover:bg-card flex flex-col gap-3 py-6 transition-colors"
+                  className="group hover:bg-primary/[0.04] relative flex flex-col gap-3 py-6 pl-5 transition-colors duration-300"
                 >
-                  <h3 className="group-hover:text-primary flex items-center gap-2 font-medium">
+                  <span className="bg-border group-hover:bg-primary absolute top-0 left-0 h-full w-[3px] rounded-full transition-all duration-300 group-hover:shadow-[0_0_12px_var(--primary)]" />
+                  <h2 className="group-hover:text-primary flex items-center gap-2 font-medium transition-colors duration-300">
                     <FileText className="text-muted-foreground size-4" />
                     {pub.title}
-                  </h3>
+                  </h2>
                   <p className="text-muted-foreground max-w-2xl text-sm">
                     {pub.abstract}
                   </p>

@@ -64,6 +64,20 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
 
   return (
     <div className="relative mx-auto aspect-square w-full max-w-lg select-none">
+      {/* Soft glow behind the center — brightens when a node is active,
+          so the graph reads as reacting, not just static wiring. */}
+      <div
+        aria-hidden
+        className={cn(
+          "absolute top-1/2 left-1/2 size-56 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-all duration-500",
+          active ? "opacity-80" : "opacity-40"
+        )}
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--primary) 30%, transparent), transparent 70%)",
+        }}
+      />
+
       <svg
         viewBox="0 0 100 100"
         aria-hidden="true"
@@ -71,18 +85,20 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
       >
         {/* Ambient flowing data paths — the brief's "background feels alive"
             requirement, not decoration: slow, low-opacity, purposeful. */}
-        <g className="text-primary/[0.12]" fill="none" stroke="currentColor">
+        <g fill="none">
           <path
             d="M -10,20 C 20,5 40,35 55,15 S 90,10 110,25"
             strokeWidth="0.4"
             strokeDasharray="2 3"
-            className="animate-flow"
+            className="text-primary/[0.18] animate-flow"
+            stroke="currentColor"
           />
           <path
             d="M -10,75 C 25,90 45,60 65,80 S 95,95 110,78"
             strokeWidth="0.4"
             strokeDasharray="2 3"
-            className="animate-flow [animation-delay:-4s]"
+            className="text-copper/[0.16] animate-flow [animation-delay:-4s]"
+            stroke="currentColor"
           />
         </g>
 
@@ -98,12 +114,12 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
               x2={p.x}
               y2={p.y}
               className={cn(
-                "transition-all duration-200",
-                lit ? "text-primary" : "text-border"
+                "transition-all duration-300",
+                lit ? "text-primary animate-dash-flow" : "text-border"
               )}
               stroke="currentColor"
-              strokeWidth={lit ? 0.4 : 0.25}
-              opacity={active && !lit ? 0.25 : 1}
+              strokeWidth={lit ? 0.45 : 0.25}
+              opacity={active && !lit ? 0.2 : 1}
             />
           );
         })}
@@ -121,12 +137,12 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
               x2={pb.x}
               y2={pb.y}
               className={cn(
-                "transition-all duration-200",
-                lit ? "text-primary" : "text-border"
+                "transition-all duration-300",
+                lit ? "text-primary animate-dash-flow" : "text-border"
               )}
               stroke="currentColor"
-              strokeWidth={lit ? 0.35 : 0.2}
-              opacity={active && !lit ? 0.15 : 0.6}
+              strokeWidth={lit ? 0.4 : 0.2}
+              opacity={active && !lit ? 0.12 : 0.6}
             />
           );
         })}
@@ -134,7 +150,12 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
 
       {/* center: the name */}
       <div className="absolute inset-0 flex items-center justify-center px-16 text-center">
-        <span className="font-heading text-xl leading-tight font-semibold text-balance sm:text-2xl">
+        <span
+          className={cn(
+            "font-heading text-xl leading-tight font-semibold text-balance transition-transform duration-300 sm:text-2xl",
+            active && "scale-105"
+          )}
+        >
           {name}
         </span>
       </div>
@@ -143,6 +164,7 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
       {disciplineNodes.map((node) => {
         const p = positions.get(node.slug)!;
         const lit = isLit(node.slug);
+        const isActive = active === node.slug;
         return (
           <button
             key={node.slug}
@@ -155,18 +177,26 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
             style={{ left: `${p.x}%`, top: `${p.y}%` }}
             className="group absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 rounded-full p-2"
           >
-            <span
-              className={cn(
-                "size-2.5 rounded-full border transition-all duration-200",
-                lit
-                  ? "border-primary bg-primary scale-125"
-                  : "border-border bg-card",
-                active && !lit && "opacity-30"
+            <span className="relative flex size-2.5 items-center justify-center">
+              {isActive && (
+                <span
+                  aria-hidden
+                  className="bg-primary animate-pulse-glow absolute inline-flex size-full rounded-full blur-[3px]"
+                />
               )}
-            />
+              <span
+                className={cn(
+                  "relative size-2.5 rounded-full border transition-all duration-300",
+                  lit
+                    ? "border-primary bg-primary scale-125"
+                    : "border-border bg-card",
+                  active && !lit && "opacity-30"
+                )}
+              />
+            </span>
             <span
               className={cn(
-                "w-16 text-center font-mono text-[10px] leading-tight tracking-wide transition-all duration-200",
+                "w-16 text-center font-mono text-[10px] leading-tight tracking-wide transition-all duration-300",
                 lit
                   ? "text-foreground opacity-100"
                   : "text-muted-foreground opacity-70",

@@ -18,30 +18,35 @@ export default function AchievementsPage() {
       {achievements.length > 0 ? (
         <ul className="divide-border border-border flex flex-col divide-y border-y">
           {achievements.map((achievement, i) => (
-            <Reveal key={achievement.slug} delay={i * 60}>
-              <li className="flex items-start gap-4 py-5">
-                <Award className="text-primary mt-0.5 size-4 shrink-0" />
-                <div className="flex flex-1 flex-col gap-1">
+            <Reveal
+              as="li"
+              key={achievement.slug}
+              delay={i * 60}
+              className="flex items-start gap-4 py-5"
+            >
+              <Award className="text-primary mt-0.5 size-4 shrink-0" />
+              <div className="flex flex-1 flex-col gap-1">
+                <h2 className="font-medium">
                   {achievement.url ? (
                     <a
                       href={achievement.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="hover:text-primary font-medium hover:underline"
+                      className="hover:text-primary hover:underline"
                     >
                       {achievement.title}
                     </a>
                   ) : (
-                    <h3 className="font-medium">{achievement.title}</h3>
+                    achievement.title
                   )}
-                  <p className="text-muted-foreground text-sm">
-                    {achievement.description}
-                  </p>
-                </div>
-                <span className="text-muted-foreground shrink-0 font-mono text-xs">
-                  {achievement.date}
-                </span>
-              </li>
+                </h2>
+                <p className="text-muted-foreground text-sm">
+                  {achievement.description}
+                </p>
+              </div>
+              <span className="text-muted-foreground shrink-0 font-mono text-xs">
+                {achievement.date}
+              </span>
             </Reveal>
           ))}
         </ul>

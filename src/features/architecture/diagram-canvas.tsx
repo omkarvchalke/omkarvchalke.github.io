@@ -43,7 +43,13 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-      <div className="border-border bg-card relative aspect-[4/3] rounded-lg border">
+      <div
+        className="border-border relative aspect-[4/3] overflow-hidden rounded-lg border"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, color-mix(in srgb, var(--primary) 6%, var(--card)), var(--card))",
+        }}
+      >
         <svg
           viewBox="0 0 100 75"
           aria-hidden="true"
@@ -62,12 +68,12 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
                 x2={to.x}
                 y2={to.y * 0.75}
                 stroke="currentColor"
-                strokeWidth={lit ? 0.4 : 0.25}
+                strokeWidth={lit ? 0.45 : 0.25}
                 className={cn(
-                  "transition-all duration-200",
-                  lit ? "text-primary" : "text-border"
+                  "transition-all duration-300",
+                  lit ? "text-primary animate-dash-flow" : "text-border"
                 )}
-                opacity={active && !lit ? 0.25 : 0.8}
+                opacity={active && !lit ? 0.2 : 0.8}
               />
             );
           })}
@@ -77,6 +83,7 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
           const meta = KIND_META[node.kind];
           const Icon = meta.icon;
           const lit = active === node.id || connected.has(node.id);
+          const isActive = active === node.id;
           return (
             <button
               key={node.id}
@@ -85,16 +92,17 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
               aria-label={node.label}
               style={{ left: `${node.x}%`, top: `${node.y}%` }}
               className={cn(
-                "absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 rounded-md p-2 transition-opacity",
+                "absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 rounded-md p-2 transition-all duration-300",
                 active && !lit && "opacity-30"
               )}
             >
               <span
                 className={cn(
-                  "flex size-9 items-center justify-center rounded-md border transition-colors",
+                  "flex size-9 items-center justify-center rounded-md border transition-all duration-300",
                   lit
                     ? "border-primary bg-primary/10 text-primary"
-                    : "border-border bg-background text-muted-foreground"
+                    : "border-border bg-background text-muted-foreground",
+                  isActive && "glow-ring-emerald scale-110"
                 )}
               >
                 <Icon className="size-4" />
@@ -107,13 +115,16 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
         })}
       </div>
 
-      <aside className="border-border bg-card rounded-lg border p-5">
+      <aside className="surface-panel border-border relative overflow-hidden rounded-lg border p-5">
         {activeNode ? (
-          <div className="flex flex-col gap-2">
+          <div
+            key={activeNode.id}
+            className="animate-rise-in flex flex-col gap-2"
+          >
             <span className="text-copper font-mono text-[11px] tracking-[0.08em] uppercase">
               {KIND_META[activeNode.kind].label}
             </span>
-            <h3 className="font-medium">{activeNode.label}</h3>
+            <h2 className="font-medium">{activeNode.label}</h2>
             <p className="text-muted-foreground text-sm">
               {activeNode.description}
             </p>

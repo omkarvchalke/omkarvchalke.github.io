@@ -29,7 +29,7 @@ export default function ResumePage() {
           <a
             href="/resume.pdf"
             download
-            className="bg-primary text-primary-foreground hover:bg-primary/85 inline-flex w-fit items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium"
+            className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex w-fit items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
           >
             <Download className="size-4" />
             Download PDF

@@ -57,7 +57,7 @@ export default async function Page({
                 href={publication.pdfUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="bg-primary text-primary-foreground hover:bg-primary/85 inline-flex w-fit items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium"
+                className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex w-fit items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
               >
                 Read PDF
                 <ArrowUpRight className="size-3.5" />

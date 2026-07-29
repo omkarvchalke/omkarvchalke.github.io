@@ -70,7 +70,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="bg-primary text-primary-foreground hover:bg-primary/85 inline-flex h-9 items-center gap-1.5 rounded-md px-3.5 text-sm font-medium"
+                className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 items-center gap-1.5 rounded-md px-3.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
               >
                 Live demo
                 <ArrowUpRight className="size-3.5" />
@@ -81,7 +81,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="border-border hover:border-primary hover:text-primary inline-flex h-9 items-center gap-1.5 rounded-md border px-3.5 text-sm font-medium"
+                className="border-border hover:border-primary hover:text-primary hover:bg-primary/5 inline-flex h-9 items-center gap-1.5 rounded-md border px-3.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
               >
                 <GitHubIcon className="size-4" />
                 Source
@@ -90,7 +90,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             {project.hasArchitectureDiagram && (
               <Link
                 href={`/architecture/${project.slug}`}
-                className="border-border hover:border-primary hover:text-primary inline-flex h-9 items-center gap-1.5 rounded-md border px-3.5 text-sm font-medium"
+                className="border-border hover:border-copper hover:text-copper hover:bg-copper/5 inline-flex h-9 items-center gap-1.5 rounded-md border px-3.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
               >
                 Architecture diagram
               </Link>

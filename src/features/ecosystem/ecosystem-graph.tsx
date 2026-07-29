@@ -55,7 +55,13 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
-      <div className="border-border bg-card relative aspect-square rounded-lg border">
+      <div
+        className="border-border relative aspect-square overflow-hidden rounded-lg border"
+        style={{
+          background:
+            "radial-gradient(ellipse 65% 65% at 50% 50%, color-mix(in srgb, var(--primary) 5%, var(--card)), var(--card))",
+        }}
+      >
         <svg
           viewBox="0 0 100 100"
           aria-hidden="true"
@@ -74,9 +80,12 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
                 x2={pb.x}
                 y2={pb.y}
                 stroke="currentColor"
-                strokeWidth={lit ? 0.35 : 0.15}
-                className={cn(lit ? "text-primary" : "text-border")}
-                opacity={active && !lit ? 0.15 : 0.5}
+                strokeWidth={lit ? 0.4 : 0.15}
+                className={cn(
+                  "transition-all duration-300",
+                  lit ? "text-primary animate-dash-flow" : "text-border"
+                )}
+                opacity={active && !lit ? 0.12 : 0.5}
               />
             );
           })}
@@ -85,6 +94,7 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
         {technologies.map((tech) => {
           const p = positions.get(tech.slug)!;
           const lit = active === tech.slug || neighbors.has(tech.slug);
+          const isActive = active === tech.slug;
           return (
             <button
               key={tech.slug}
@@ -95,18 +105,26 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
               style={{ left: `${p.x}%`, top: `${p.y}%` }}
               className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 p-1.5"
             >
-              <span
-                className={cn(
-                  "size-2 rounded-full border transition-all duration-200",
-                  lit
-                    ? "border-primary bg-primary scale-125"
-                    : "border-border bg-background",
-                  active && !lit && "opacity-30"
+              <span className="relative flex size-2 items-center justify-center">
+                {isActive && (
+                  <span
+                    aria-hidden
+                    className="bg-primary animate-pulse-glow absolute inline-flex size-full rounded-full blur-[2px]"
+                  />
                 )}
-              />
+                <span
+                  className={cn(
+                    "relative size-2 rounded-full border transition-all duration-300",
+                    lit
+                      ? "border-primary bg-primary scale-125"
+                      : "border-border bg-background",
+                    active && !lit && "opacity-30"
+                  )}
+                />
+              </span>
               <span
                 className={cn(
-                  "font-mono text-[10px] whitespace-nowrap transition-opacity duration-200",
+                  "font-mono text-[10px] whitespace-nowrap transition-opacity duration-300",
                   lit ? "text-foreground" : "text-muted-foreground opacity-70",
                   active && !lit && "opacity-20"
                 )}
@@ -118,14 +136,17 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
         })}
       </div>
 
-      <aside className="border-border bg-card rounded-lg border p-5">
+      <aside className="surface-panel border-border rounded-lg border p-5">
         {activeTech ? (
-          <div className="flex flex-col gap-4">
+          <div
+            key={activeTech.slug}
+            className="animate-rise-in flex flex-col gap-4"
+          >
             <div>
               <span className="text-copper font-mono text-[11px] tracking-[0.08em] uppercase">
                 {activeTech.category}
               </span>
-              <h3 className="font-medium">{activeTech.name}</h3>
+              <h2 className="font-medium">{activeTech.name}</h2>
             </div>
             <RelatedList
               label="Projects"
@@ -172,9 +193,9 @@ function RelatedList({
   if (items.length === 0) return null;
   return (
     <div className="flex flex-col gap-1.5">
-      <h4 className="text-muted-foreground font-mono text-[11px] tracking-[0.08em] uppercase">
+      <h3 className="text-muted-foreground font-mono text-[11px] tracking-[0.08em] uppercase">
         {label}
-      </h4>
+      </h3>
       {items.map((item) => (
         <Link
           key={item.key}

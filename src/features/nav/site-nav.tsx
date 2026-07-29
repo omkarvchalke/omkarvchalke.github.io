@@ -31,17 +31,23 @@ export function SiteNav() {
             const isActive =
               pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
-              <li key={link.href} className="shrink-0">
+              <li key={link.href} className="relative shrink-0">
                 <Link
                   href={link.href}
                   className={cn(
-                    "rounded-md px-2.5 py-2 text-sm whitespace-nowrap transition-colors sm:px-3",
+                    "hover:bg-primary/5 relative rounded-md px-2.5 py-2 text-sm whitespace-nowrap transition-all duration-300 sm:px-3",
                     isActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {link.label}
+                  {isActive && (
+                    <span
+                      aria-hidden
+                      className="bg-primary absolute right-2.5 -bottom-[1px] left-2.5 h-px shadow-[0_0_8px_var(--primary)] sm:right-3 sm:left-3"
+                    />
+                  )}
                 </Link>
               </li>
             );

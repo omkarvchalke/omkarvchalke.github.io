@@ -8,6 +8,10 @@ interface RevealProps {
   className?: string;
   /** Stagger delay in ms — pass index * 60 from a list for a cascading reveal. */
   delay?: number;
+  /** Render as this element instead of a wrapping div — required inside
+   * <ul>/<ol> (pass "li"), where a wrapping div breaks list semantics
+   * (axe: "list must only directly contain li"). */
+  as?: "div" | "li";
 }
 
 /**
@@ -21,8 +25,13 @@ interface RevealProps {
  * every page's list/grid gets the same reveal rhythm instead of each one
  * reinventing an IntersectionObserver.
  */
-export function Reveal({ children, className, delay = 0 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = "div",
+}: RevealProps) {
+  const ref = useRef<HTMLDivElement & HTMLLIElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -41,8 +50,10 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
     return () => observer.disconnect();
   }, []);
 
+  const Tag = as;
+
   return (
-    <div
+    <Tag
       ref={ref}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
       className={cn(
@@ -52,6 +63,6 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       )}
     >
       {children}
-    </div>
+    </Tag>
   );
 }

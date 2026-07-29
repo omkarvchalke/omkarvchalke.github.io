@@ -27,11 +27,11 @@ export default function ArchitectureGalleryPage() {
             <Reveal key={project.slug} delay={i * 60}>
               <Link
                 href={`/architecture/${project.slug}`}
-                className="group border-border bg-card hover:border-primary flex h-full flex-col gap-3 rounded-lg border p-6 transition-colors"
+                className="surface-card group border-border flex h-full flex-col gap-3 rounded-lg border p-6"
               >
-                <h3 className="group-hover:text-primary font-medium">
+                <h2 className="group-hover:text-primary font-medium transition-colors duration-300">
                   {project.name}
-                </h3>
+                </h2>
                 <p className="text-muted-foreground text-sm">
                   {project.summary}
                 </p>

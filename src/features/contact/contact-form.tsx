@@ -109,7 +109,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="bg-primary text-primary-foreground hover:bg-primary/85 inline-flex h-10 w-fit items-center gap-2 rounded-md px-4 text-sm font-medium transition-colors disabled:opacity-50"
+        className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-fit items-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
       >
         {status === "submitting" ? "Sending…" : "Send message"}
         <Send className="size-3.5" />
