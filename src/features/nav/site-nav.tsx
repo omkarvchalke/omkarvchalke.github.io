@@ -12,7 +12,6 @@ const LINKS = [
   { id: "architecture", label: "Architecture" },
   { id: "publications", label: "Publications" },
   { id: "ecosystem", label: "Ecosystem" },
-  { id: "github", label: "GitHub" },
   { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ];

@@ -32,14 +32,14 @@ npm run build      # static export, output in /out
 
 ## Single-page architecture
 
-Everything lives at `/` — there is no client-side routing, no separate pages per section. `src/app/page.tsx` assembles the Hero plus nine sections in order:
+Everything lives at `/` — there is no client-side routing, no separate pages per section. `src/app/page.tsx` assembles the Hero plus eight sections in order:
 
 ```
 src/features/home/
   section-shell.tsx        shared wrapper: id anchor, scroll-mt offset, heading
   about-section.tsx  experience-section.tsx  projects-section.tsx
   architecture-section.tsx  publications-section.tsx  ecosystem-section.tsx
-  github-section.tsx  achievements-section.tsx  contact-section.tsx
+  achievements-section.tsx  contact-section.tsx
 ```
 
 - **Nav is scroll-spy, not routing**: `src/features/nav/site-nav.tsx` watches each section with an `IntersectionObserver` and highlights whichever one is currently in view; every link is a plain `#anchor`, not a Next.js route.
@@ -62,7 +62,7 @@ src/content/
   index.ts          barrel export
 ```
 
-The hero node ecosystem, Tech Ecosystem graph, Architecture Gallery, GitHub dashboard, and every cross-link between sections all read from these same arrays — there is no duplicated content anywhere. **7 projects and 23 technologies are real**, pulled from the actual READMEs at `github.com/omkarvchalke` (see the comment at the top of `src/content/projects.ts`); About/Experience/Achievements/Publications are explicit bracketed placeholders (`[Company Name]`) pending [`docs/content/INTAKE.md`](docs/content/INTAKE.md).
+The hero node ecosystem, Tech Ecosystem graph, Architecture Gallery, and every cross-link between sections all read from these same arrays — there is no duplicated content anywhere. **7 projects and 23 technologies are real**, pulled from the actual READMEs at `github.com/omkarvchalke` (see the comment at the top of `src/content/projects.ts`); About/Experience/Achievements/Publications are explicit bracketed placeholders (`[Company Name]`) pending [`docs/content/INTAKE.md`](docs/content/INTAKE.md).
 
 Since there are no dynamic routes anymore (single page, no `[slug]` segments), the static export always builds successfully regardless of content state — the Phase 3–8 caveat about `generateStaticParams` requiring at least one entry no longer applies.
 
@@ -71,7 +71,6 @@ Since there are no dynamic routes anymore (single page, no `[slug]` segments), t
 GitHub Pages has no Node runtime, so the whole app is statically exported (`next.config.ts`, `output: "export"`, `images.unoptimized: true`). Consequences, decided in Phase 3 and built out in Phase 5:
 
 - **Contact form is client-side only**, posting to an optional `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` (e.g. a Formspree endpoint) with a `mailto:` fallback when unset — so it works with zero configuration and upgrades cleanly once a real endpoint exists.
-- **GitHub Activity is client-side only**, hitting `api.github.com` directly from the browser with a 5-minute `sessionStorage` cache to stay within the 60 req/hr unauthenticated rate limit. The contribution calendar specifically isn't in the public REST API without an auth token, so it renders via a third-party SVG service (`ghchart.rshah.org`) with a graceful fallback if that's ever unreachable — swappable later for a build-time authenticated fetch if preferred.
 - **Résumé** is folded into the Contact section: `src/features/home/contact-section.tsx` checks `fs.existsSync` for `public/resume.pdf` at build time (a Server Component, unlike the rest of that section) and renders a real download button once that file exists.
 - **basePath is computed at deploy time**, not hardcoded — see `.github/workflows/deploy.yml`. A repo named `<owner>.github.io` deploys to the domain root; any other repo name deploys as a project page at `<owner>.github.io/<repo>` with `NEXT_BASE_PATH` set accordingly.
 - **`NEXT_PUBLIC_SITE_URL`** should be set once the real domain is known — it feeds `metadataBase`, the sitemap, and robots.txt (`src/app/sitemap.ts`, `src/app/robots.ts`). Defaults to `https://omkarvchalke.github.io` (a reasonable guess given the confirmed GitHub username).
