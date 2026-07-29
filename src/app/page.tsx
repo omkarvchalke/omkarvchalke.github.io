@@ -7,6 +7,7 @@ import { PublicationsSection } from "@/features/home/publications-section";
 import { EcosystemSection } from "@/features/home/ecosystem-section";
 import { AchievementsSection } from "@/features/home/achievements-section";
 import { LeadershipSection } from "@/features/home/leadership-section";
+import { ExtraCurricularSection } from "@/features/home/extracurricular-section";
 import { ContactSection } from "@/features/home/contact-section";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <EcosystemSection />
       <AchievementsSection />
       <LeadershipSection />
+      <ExtraCurricularSection />
       <ContactSection />
     </>
   );

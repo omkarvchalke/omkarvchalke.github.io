@@ -94,6 +94,16 @@ Dates: (e.g. "2023–Present", or leave blank if ongoing/undated)
 
 ---
 
+## Extra-Curricular (one block per entry)
+
+```
+Category: (short label, e.g. Volunteering, Hobby, Advocacy, Dramatics)
+Activity:
+Description: (1 sentence)
+```
+
+---
+
 ## Resume
 
 - PDF file (or a link) to use for the "View Resume" download.

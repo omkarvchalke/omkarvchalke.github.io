@@ -53,7 +53,7 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
     : null;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div className="mx-auto grid w-full max-w-4xl gap-6 lg:grid-cols-[1fr_260px]">
       <div
         className="border-border relative aspect-square overflow-hidden rounded-lg border"
         style={{

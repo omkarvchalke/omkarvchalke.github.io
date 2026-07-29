@@ -5,4 +5,5 @@ export * from "./experience";
 export * from "./publications";
 export * from "./achievements";
 export * from "./leadership";
+export * from "./extracurricular";
 export * from "./graph";

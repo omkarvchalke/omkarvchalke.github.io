@@ -14,6 +14,7 @@ const LINKS = [
   { id: "ecosystem", label: "Ecosystem" },
   { id: "achievements", label: "Achievements" },
   { id: "leadership", label: "Leadership" },
+  { id: "extracurricular", label: "Extra-Curricular" },
   { id: "contact", label: "Contact" },
 ];
 

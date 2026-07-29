@@ -22,6 +22,7 @@ export function ContactSection() {
       eyebrow="Contact"
       title="Get in touch."
       icon={Mail}
+      tone="tint"
     >
       <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
         <ContactForm />

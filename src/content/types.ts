@@ -150,3 +150,12 @@ export interface LeadershipEntry {
   description: string;
   dateRange?: string;
 }
+
+export interface ExtraCurricularEntry {
+  slug: string;
+  /** Free text (e.g. "Volunteering", "Hobby", "Advocacy") — same open-ended
+   * shape as LeadershipEntry.category. */
+  category: string;
+  title: string;
+  description: string;
+}
