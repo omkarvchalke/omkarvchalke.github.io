@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import type { Technology } from "@/content/types";
 import {
   experienceUsingTechnology,
@@ -146,14 +145,14 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
               <span className="text-copper font-mono text-[11px] tracking-[0.08em] uppercase">
                 {activeTech.category}
               </span>
-              <h2 className="font-medium">{activeTech.name}</h2>
+              <h3 className="font-medium">{activeTech.name}</h3>
             </div>
             <RelatedList
               label="Projects"
               items={projectsUsingTechnology(activeTech.slug).map((p) => ({
                 key: p.slug,
                 label: p.name,
-                href: `/projects/${p.slug}`,
+                href: `#project-${p.slug}`,
               }))}
             />
             <RelatedList
@@ -161,7 +160,7 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
               items={experienceUsingTechnology(activeTech.slug).map((e) => ({
                 key: e.slug,
                 label: `${e.role} · ${e.company}`,
-                href: "/experience",
+                href: `#experience-${e.slug}`,
               }))}
             />
             <RelatedList
@@ -169,7 +168,7 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
               items={publicationsUsingTechnology(activeTech.slug).map((p) => ({
                 key: p.slug,
                 label: p.title,
-                href: `/publications/${p.slug}`,
+                href: `#publication-${p.slug}`,
               }))}
             />
           </div>
@@ -193,17 +192,17 @@ function RelatedList({
   if (items.length === 0) return null;
   return (
     <div className="flex flex-col gap-1.5">
-      <h3 className="text-muted-foreground font-mono text-[11px] tracking-[0.08em] uppercase">
+      <h4 className="text-muted-foreground font-mono text-[11px] tracking-[0.08em] uppercase">
         {label}
-      </h3>
+      </h4>
       {items.map((item) => (
-        <Link
+        <a
           key={item.key}
           href={item.href}
           className="text-primary text-sm hover:underline"
         >
           {item.label}
-        </Link>
+        </a>
       ))}
     </div>
   );

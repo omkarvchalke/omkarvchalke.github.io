@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import type { Experience } from "@/content/types";
 import { getTechnology, projectsForExperience } from "@/content/graph";
 import { cn } from "@/lib/utils";
@@ -56,7 +55,12 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
   const relatedProjects = projectsForExperience(role.slug);
 
   return (
-    <Reveal as="li" delay={index * 60} className="relative pl-6">
+    <Reveal
+      as="li"
+      id={`experience-${role.slug}`}
+      delay={index * 60}
+      className="relative scroll-mt-20 pl-6"
+    >
       <span
         className={cn(
           "absolute top-6 -left-[7px] size-3 rounded-full border-2 transition-all duration-300",
@@ -73,7 +77,7 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
           className="flex w-full items-start justify-between gap-4 p-5 text-left"
         >
           <div>
-            <h2 className="font-medium">{role.role}</h2>
+            <h3 className="font-medium">{role.role}</h3>
             <p className="text-muted-foreground mt-0.5 font-mono text-xs">
               {role.company} · {formatRange(role.startDate, role.endDate)}
             </p>
@@ -101,9 +105,9 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
                   return null;
                 return (
                   <div key={key} className="flex flex-col gap-2">
-                    <h3 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
+                    <h4 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
                       {label}
-                    </h3>
+                    </h4>
                     <EntryDetail value={value} />
                   </div>
                 );
@@ -111,9 +115,9 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
 
               {role.metrics.length > 0 && (
                 <div className="flex flex-col gap-2 sm:col-span-2">
-                  <h3 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
+                  <h4 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
                     Metrics
-                  </h3>
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {role.metrics.map((m) => (
                       <span
@@ -130,9 +134,9 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
 
               {tech.length > 0 && (
                 <div className="flex flex-col gap-2 sm:col-span-2">
-                  <h3 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
+                  <h4 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
                     Technologies
-                  </h3>
+                  </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {tech.map((t) => (
                       <span
@@ -148,18 +152,18 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
 
               {relatedProjects.length > 0 && (
                 <div className="flex flex-col gap-2 sm:col-span-2">
-                  <h3 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
+                  <h4 className="text-copper font-mono text-[11px] tracking-[0.1em] uppercase">
                     Related projects
-                  </h3>
+                  </h4>
                   <div className="flex flex-wrap gap-3">
                     {relatedProjects.map((p) => (
-                      <Link
+                      <a
                         key={p.slug}
-                        href={`/projects/${p.slug}`}
+                        href={`#project-${p.slug}`}
                         className="text-primary text-sm hover:underline"
                       >
                         {p.name} →
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>

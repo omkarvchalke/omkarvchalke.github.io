@@ -236,6 +236,9 @@
   .animate-rise-in {
     animation: none;
   }
+  html {
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Elevated surface: gradient + shadow + lift-on-hover, used by every card

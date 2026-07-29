@@ -124,7 +124,7 @@ export function DiagramCanvas({ diagram }: { diagram: ArchitectureDiagram }) {
             <span className="text-copper font-mono text-[11px] tracking-[0.08em] uppercase">
               {KIND_META[activeNode.kind].label}
             </span>
-            <h2 className="font-medium">{activeNode.label}</h2>
+            <h4 className="font-medium">{activeNode.label}</h4>
             <p className="text-muted-foreground text-sm">
               {activeNode.description}
             </p>

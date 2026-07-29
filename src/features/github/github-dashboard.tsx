@@ -131,7 +131,7 @@ export function GitHubDashboard() {
             className="border-border size-14 rounded-full border"
           />
           <div>
-            <h2 className="font-medium">{user.name ?? user.login}</h2>
+            <h3 className="font-medium">{user.name ?? user.login}</h3>
             {user.bio && (
               <p className="text-muted-foreground text-sm">{user.bio}</p>
             )}
@@ -159,9 +159,9 @@ export function GitHubDashboard() {
 
       <Reveal delay={90}>
         <section className="flex flex-col gap-3">
-          <h2 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
+          <h3 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
             Contribution activity
-          </h2>
+          </h3>
           {!chartFailed ? (
             // Third-party rendered chart (GitHub's own contribution calendar
             // isn't in the public REST API without an auth token). Swappable
@@ -184,9 +184,9 @@ export function GitHubDashboard() {
       {derived.languages.length > 0 && (
         <Reveal delay={120}>
           <section className="flex flex-col gap-3">
-            <h2 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
+            <h3 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
               Language breakdown
-            </h2>
+            </h3>
             <div className="flex flex-col gap-2.5">
               {derived.languages.map((lang) => (
                 <div key={lang.name} className="flex items-center gap-3">
@@ -209,9 +209,9 @@ export function GitHubDashboard() {
 
       <Reveal delay={150}>
         <section className="flex flex-col gap-3">
-          <h2 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
+          <h3 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
             Pinned repositories
-          </h2>
+          </h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {derived.topRepos.map((repo) => (
               <a
@@ -221,7 +221,7 @@ export function GitHubDashboard() {
                 rel="noreferrer noopener"
                 className="surface-card border-border flex flex-col gap-2 rounded-lg border p-5"
               >
-                <h3 className="font-medium">{repo.name}</h3>
+                <h4 className="font-medium">{repo.name}</h4>
                 <p className="text-muted-foreground line-clamp-2 flex-1 text-sm">
                   {repo.description ?? "No description."}
                 </p>
@@ -245,9 +245,9 @@ export function GitHubDashboard() {
       {derived.recentEvents.length > 0 && (
         <Reveal delay={180}>
           <section className="flex flex-col gap-3">
-            <h2 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
+            <h3 className="text-muted-foreground font-mono text-xs tracking-[0.14em] uppercase">
               Recent activity
-            </h2>
+            </h3>
             <ul className="divide-border surface-panel border-border flex flex-col divide-y rounded-lg border">
               {derived.recentEvents.map((event) => (
                 <li

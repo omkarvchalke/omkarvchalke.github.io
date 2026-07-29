@@ -1,23 +1,23 @@
-import type { Metadata } from "next";
-import { Mail } from "lucide-react";
-import { PageContainer } from "@/components/page-container";
-import { SectionHeader } from "@/components/section-header";
-import { ContactForm } from "@/features/contact/contact-form";
+import fs from "node:fs";
+import path from "node:path";
+import { Download, Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch.",
-};
+import { ContactForm } from "@/features/contact/contact-form";
+import { SectionShell } from "./section-shell";
 
 const CONTACT_EMAIL = "chalkeomkarvilas@gmail.com";
 const GITHUB_URL = "https://github.com/omkarvchalke";
 const LINKEDIN_URL = "https://www.linkedin.com/in/omkarvchalke/";
 
-export default function ContactPage() {
+function hasResumeFile() {
+  return fs.existsSync(path.join(process.cwd(), "public", "resume.pdf"));
+}
+
+export function ContactSection() {
+  const resumeAvailable = hasResumeFile();
+
   return (
-    <PageContainer>
-      <SectionHeader eyebrow="Contact" title="Get in touch." />
+    <SectionShell id="contact" eyebrow="Contact" title="Get in touch.">
       <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
         <ContactForm />
         <aside className="flex flex-col gap-6">
@@ -54,8 +54,22 @@ export default function ContactPage() {
               linkedin.com/in/omkarvchalke
             </a>
           </div>
+          {resumeAvailable ? (
+            <a
+              href="/resume.pdf"
+              download
+              className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-fit items-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <Download className="size-4" />
+              Download résumé
+            </a>
+          ) : (
+            <p className="text-muted-foreground font-mono text-xs">
+              Résumé pending — drop it at public/resume.pdf
+            </p>
+          )}
         </aside>
       </div>
-    </PageContainer>
+    </SectionShell>
   );
 }

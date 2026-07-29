@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight, FileText, Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { NodeEcosystem } from "./node-ecosystem";
@@ -42,20 +41,20 @@ export function Hero() {
             className="animate-rise-in flex flex-wrap items-center gap-3 pt-2"
             style={{ animationDelay: "170ms" }}
           >
-            <Link
-              href="/projects"
+            <a
+              href="#work"
               className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
             >
               Explore Projects
               <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              href="/resume"
+            </a>
+            <a
+              href="#contact"
               className="border-border hover:border-primary hover:text-primary hover:bg-primary/5 inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
             >
               <FileText className="size-4" />
               View Resume
-            </Link>
+            </a>
           </div>
 
           <div

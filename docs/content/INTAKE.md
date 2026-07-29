@@ -88,13 +88,13 @@ _Free list — awards, certifications, notable recognitions. One line each is fi
 
 ---
 
-## GitHub Activity page
+## GitHub Activity section
 
 - Confirm the GitHub username to pull public data from: `omkarvchalke` (already used elsewhere) — say if this is wrong.
 - Any repos you specifically want pinned/featured, or should it just surface your most-starred/most-active ones automatically?
 
 ---
 
-## Contact page
+## Contact section
 
 - Anything beyond the email/GitHub/LinkedIn already in the hero — availability status (e.g. "open to opportunities"), preferred contact method, timezone?

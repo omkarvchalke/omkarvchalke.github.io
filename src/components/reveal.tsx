@@ -12,6 +12,8 @@ interface RevealProps {
    * <ul>/<ol> (pass "li"), where a wrapping div breaks list semantics
    * (axe: "list must only directly contain li"). */
   as?: "div" | "li";
+  /** Anchor target for same-page cross-links (e.g. "experience-<slug>"). */
+  id?: string;
 }
 
 /**
@@ -30,6 +32,7 @@ export function Reveal({
   className,
   delay = 0,
   as = "div",
+  id,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement & HTMLLIElement>(null);
   const [visible, setVisible] = useState(false);
@@ -55,6 +58,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref}
+      id={id}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
       className={cn(
         "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",

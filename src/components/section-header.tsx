@@ -18,9 +18,9 @@ export function SectionHeader({
         <span className="bg-primary inline-block h-px w-3" />
         {eyebrow}
       </span>
-      <h1 className="text-3xl font-semibold text-balance sm:text-4xl">
+      <h2 className="text-3xl font-semibold text-balance sm:text-4xl">
         {title}
-      </h1>
+      </h2>
       {description && (
         <p className="text-muted-foreground max-w-2xl text-pretty">
           {description}
