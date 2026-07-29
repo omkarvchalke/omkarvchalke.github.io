@@ -13,6 +13,7 @@ const LINKS = [
   { id: "publications", label: "Publications" },
   { id: "ecosystem", label: "Ecosystem" },
   { id: "achievements", label: "Achievements" },
+  { id: "leadership", label: "Leadership" },
   { id: "contact", label: "Contact" },
 ];
 

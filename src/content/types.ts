@@ -138,3 +138,15 @@ export interface Achievement {
   date: string; // ISO yyyy-mm
   url?: string;
 }
+
+export interface LeadershipEntry {
+  slug: string;
+  /** Free text (e.g. "Mentorship", "Team Lead", "Outreach") — open-ended,
+   * unlike Discipline/TechnologyCategory, since this describes the nature
+   * of a personal contribution rather than a fixed taxonomy. */
+  category: string;
+  role: string;
+  organization: string;
+  description: string;
+  dateRange?: string;
+}

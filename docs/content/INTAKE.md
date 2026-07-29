@@ -82,16 +82,21 @@ _Free list — awards, certifications, notable recognitions. One line each is fi
 
 ---
 
-## Resume
+## Leadership (one block per entry)
 
-- PDF file (or a link) to use for the "View Resume" download.
+```
+Category: (short label, e.g. Mentorship, Team Lead, Outreach, Community)
+Role:
+Organization:
+Description: (1-2 sentences — what you actually did/contributed)
+Dates: (e.g. "2023–Present", or leave blank if ongoing/undated)
+```
 
 ---
 
-## GitHub Activity section
+## Resume
 
-- Confirm the GitHub username to pull public data from: `omkarvchalke` (already used elsewhere) — say if this is wrong.
-- Any repos you specifically want pinned/featured, or should it just surface your most-starred/most-active ones automatically?
+- PDF file (or a link) to use for the "View Resume" download.
 
 ---
 
