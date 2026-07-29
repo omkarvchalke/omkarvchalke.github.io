@@ -2,7 +2,7 @@ import { technologies } from "./technologies";
 import { projects } from "./projects";
 import { experience } from "./experience";
 import { publications } from "./publications";
-import type { Technology } from "./types";
+import type { Discipline, Technology } from "./types";
 
 /**
  * Relation queries over the content graph. These are what every
@@ -57,4 +57,13 @@ export function projectForPublication(slug: string) {
 
 export function featuredProjects() {
   return projects.filter((p) => p.depth === "full");
+}
+
+/** Powers the hero node ecosystem's hover counts (Phase 4). */
+export function projectsByDiscipline(discipline: Discipline) {
+  return projects.filter((p) => p.disciplines.includes(discipline));
+}
+
+export function experienceByDiscipline(discipline: Discipline) {
+  return experience.filter((e) => e.disciplines.includes(discipline));
 }

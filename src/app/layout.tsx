@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteNav } from "@/features/nav/site-nav";
+import { SiteFooter } from "@/features/nav/site-footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,7 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "OVC — Systems Engineer",
+  title: "Omkar Vilas Chalke",
   description:
     "I build scalable software, intelligent data platforms, and AI-powered applications.",
 };
@@ -35,7 +37,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <SiteNav />
           {children}
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

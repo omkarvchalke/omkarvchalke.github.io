@@ -6,16 +6,16 @@ Design rationale lives in [`docs/planning/`](docs/planning) — Phase 1 (researc
 
 ## Stack
 
-| Concern    | Choice                                                        | Why                                                                                                      |
-| ---------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Framework  | Next.js 15 (App Router), React 19, TypeScript                 | Pinned to 15 per the brief even though `create-next-app@latest` currently resolves to 16                 |
-| Styling    | Tailwind CSS v4 (CSS-first `@theme`)                          | Design tokens (Phase 2) live as CSS custom properties, no JS config file                                 |
-| Components | shadcn/ui (`base-nova` style, Base UI primitives)             | Copy-in components themed entirely through our CSS variables — no separate component palette to maintain |
-| Motion     | `motion` (Framer Motion's current package name)               |                                                                                                          |
-| Icons      | lucide-react                                                  |                                                                                                          |
-| Forms      | react-hook-form + zod                                         |                                                                                                          |
-| Theme      | next-themes, `defaultTheme="dark"`, `enableSystem`            | Dark-first per the brief, light theme fully specified and available via system preference                |
-| Deployment | Static export (`output: "export"`) → GitHub Pages via Actions | See [Static hosting](#static-hosting)                                                                    |
+| Concern    | Choice                                                        | Why                                                                                                                                  |
+| ---------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Framework  | Next.js 15 (App Router), React 19, TypeScript                 | Pinned to 15 per the brief even though `create-next-app@latest` currently resolves to 16                                             |
+| Styling    | Tailwind CSS v4 (CSS-first `@theme`)                          | Design tokens (Phase 2) live as CSS custom properties, no JS config file                                                             |
+| Components | shadcn/ui (`base-nova` style, Base UI primitives)             | Copy-in components themed entirely through our CSS variables — no separate component palette to maintain                             |
+| Motion     | `motion` (Framer Motion's current package name)               |                                                                                                                                      |
+| Icons      | lucide-react                                                  |                                                                                                                                      |
+| Forms      | react-hook-form + zod                                         |                                                                                                                                      |
+| Theme      | next-themes, `defaultTheme="dark"`, `enableSystem`            | Dark-first per the brief; light theme fully specified and reachable via the nav's theme toggle (`src/features/nav/theme-toggle.tsx`) |
+| Deployment | Static export (`output: "export"`) → GitHub Pages via Actions | See [Static hosting](#static-hosting)                                                                                                |
 
 ## Getting started
 

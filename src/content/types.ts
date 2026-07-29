@@ -80,6 +80,7 @@ export interface Experience {
   responsibilities: string[];
   impact: string[];
   techSlugs: string[];
+  disciplines: Discipline[];
   metrics: Metric[];
   screenshots?: string[];
   relatedProjectSlugs?: string[];

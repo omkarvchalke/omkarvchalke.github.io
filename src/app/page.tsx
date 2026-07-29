@@ -1,11 +1,5 @@
-import { PagePlaceholder } from "@/components/page-placeholder";
+import { Hero } from "@/features/hero/hero";
 
 export default function Home() {
-  return (
-    <PagePlaceholder
-      eyebrow="Home"
-      title="I build scalable software, intelligent data platforms, and AI-powered applications."
-      phase="Hero + node ecosystem land in Phase 4"
-    />
-  );
+  return <Hero />;
 }
