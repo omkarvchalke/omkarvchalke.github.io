@@ -123,9 +123,9 @@ export function EcosystemGraph({ technologies, edges }: EcosystemGraphProps) {
               </span>
               <span
                 className={cn(
-                  "font-mono text-[10px] whitespace-nowrap transition-opacity duration-300",
-                  lit ? "text-foreground" : "text-muted-foreground opacity-70",
-                  active && !lit && "opacity-20"
+                  "font-mono text-[11px] whitespace-nowrap transition-opacity duration-300",
+                  lit ? "text-foreground" : "text-muted-foreground",
+                  active && !lit && "opacity-30"
                 )}
               >
                 {tech.name}

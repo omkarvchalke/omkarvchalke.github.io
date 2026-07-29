@@ -196,11 +196,9 @@ export function NodeEcosystem({ name }: NodeEcosystemProps) {
             </span>
             <span
               className={cn(
-                "w-16 text-center font-mono text-[10px] leading-tight tracking-wide transition-all duration-300",
-                lit
-                  ? "text-foreground opacity-100"
-                  : "text-muted-foreground opacity-70",
-                active && !lit && "opacity-20"
+                "w-16 text-center font-mono text-[11px] leading-tight tracking-wide transition-all duration-300",
+                lit ? "text-foreground" : "text-muted-foreground",
+                active && !lit && "opacity-30"
               )}
             >
               {node.label}
