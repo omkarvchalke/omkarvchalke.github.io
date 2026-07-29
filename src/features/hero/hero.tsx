@@ -1,5 +1,7 @@
 import { ArrowRight, FileText, Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { MagneticLink } from "@/components/magnetic-link";
+import { WordReveal } from "@/components/word-reveal";
 import { NodeEcosystem } from "./node-ecosystem";
 
 const SITE_OWNER = {
@@ -23,13 +25,12 @@ export function Hero() {
 
       <div className="mx-auto flex max-w-7xl flex-col-reverse items-center gap-16 px-6 py-20 lg:min-h-[calc(100svh-4rem)] lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-0">
         <div className="flex max-w-xl flex-col items-start gap-6 text-left">
-          <h1 className="animate-rise-in text-4xl leading-[1.08] font-semibold text-balance sm:text-5xl">
-            I build scalable software, intelligent data platforms, and
-            AI-powered applications.
+          <h1 className="text-5xl leading-[1.03] font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            <WordReveal text="I build scalable software, intelligent data platforms, and AI-powered applications." />
           </h1>
           <p
             className="animate-rise-in text-muted-foreground max-w-md text-lg text-pretty"
-            style={{ animationDelay: "90ms" }}
+            style={{ animationDelay: "820ms" }}
           >
             I design and ship systems end to end — from data pipelines and cloud
             infrastructure to the applications and APIs people actually use. My
@@ -39,27 +40,27 @@ export function Hero() {
 
           <div
             className="animate-rise-in flex flex-wrap items-center gap-3 pt-2"
-            style={{ animationDelay: "170ms" }}
+            style={{ animationDelay: "900ms" }}
           >
-            <a
+            <MagneticLink
               href="#work"
-              className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+              className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm font-medium transition-[color,background-color,transform] duration-200 ease-out"
             >
               Explore Projects
               <ArrowRight className="size-4" />
-            </a>
-            <a
+            </MagneticLink>
+            <MagneticLink
               href="#contact"
-              className="border-border hover:border-primary hover:text-primary hover:bg-primary/5 inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+              className="border-border hover:border-primary hover:text-primary hover:bg-primary/5 inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 ease-out"
             >
               <FileText className="size-4" />
               View Resume
-            </a>
+            </MagneticLink>
           </div>
 
           <div
             className="text-muted-foreground animate-rise-in flex items-center gap-1 pt-1"
-            style={{ animationDelay: "230ms" }}
+            style={{ animationDelay: "970ms" }}
           >
             <a
               href={SITE_OWNER.github}

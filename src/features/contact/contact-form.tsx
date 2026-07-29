@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useMagneticHover } from "@/hooks/use-magnetic-hover";
 
 const CONTACT_EMAIL = "chalkeomkarvilas@gmail.com";
 // Set at build time once a real form endpoint (e.g. Formspree) exists.
@@ -25,6 +26,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const submitRef = useMagneticHover<HTMLButtonElement>();
   const {
     register,
     handleSubmit,
@@ -107,9 +109,10 @@ export function ContactForm() {
       )}
 
       <button
+        ref={submitRef}
         type="submit"
         disabled={status === "submitting"}
-        className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-fit items-center gap-2 rounded-md px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+        className="glow-ring-emerald bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-fit items-center gap-2 rounded-md px-4 text-sm font-medium transition-[color,background-color,transform] duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       >
         {status === "submitting" ? "Sending…" : "Send message"}
         <Send className="size-3.5" />

@@ -6,6 +6,7 @@ import { projectForPublication, getTechnology } from "@/content/graph";
 import { EmptyState } from "@/components/empty-state";
 import { Expandable, ExpandChevron } from "@/components/expandable";
 import { Reveal } from "@/components/reveal";
+import { TechBadge } from "@/components/tech-badge";
 import { SectionShell } from "./section-shell";
 
 export function PublicationsSection() {
@@ -15,6 +16,7 @@ export function PublicationsSection() {
       eyebrow="Publications"
       title="Research, written up properly."
       description="Abstract, problem, methods, and the project each publication came out of."
+      icon={FileText}
     >
       {publications.length > 0 ? (
         <div className="flex flex-col gap-4">
@@ -60,13 +62,11 @@ export function PublicationsSection() {
                     {tech.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
                         {tech.map((t) => (
-                          <a
+                          <TechBadge
                             key={t!.slug}
+                            technology={t!}
                             href={`#${t!.slug}`}
-                            className="border-border text-muted-foreground hover:border-primary hover:text-primary rounded-md border px-2 py-0.5 font-mono text-[11px] transition-colors"
-                          >
-                            {t!.name}
-                          </a>
+                          />
                         ))}
                       </div>
                     )}

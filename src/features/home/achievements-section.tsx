@@ -10,6 +10,8 @@ export function AchievementsSection() {
       id="achievements"
       eyebrow="Achievements"
       title="Notable milestones."
+      icon={Award}
+      tone="tint"
     >
       {achievements.length > 0 ? (
         <ul className="divide-border border-border flex flex-col divide-y border-y">

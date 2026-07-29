@@ -17,7 +17,12 @@ export function ContactSection() {
   const resumeAvailable = hasResumeFile();
 
   return (
-    <SectionShell id="contact" eyebrow="Contact" title="Get in touch.">
+    <SectionShell
+      id="contact"
+      eyebrow="Contact"
+      title="Get in touch."
+      icon={Mail}
+    >
       <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
         <ContactForm />
         <aside className="flex flex-col gap-6">

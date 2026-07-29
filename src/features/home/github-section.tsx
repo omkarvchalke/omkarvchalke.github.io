@@ -1,3 +1,4 @@
+import { GitHubIcon } from "@/components/brand-icons";
 import { GitHubDashboard } from "@/features/github/github-dashboard";
 import { SectionShell } from "./section-shell";
 
@@ -8,6 +9,7 @@ export function GitHubSection() {
       eyebrow="GitHub Activity"
       title="Proof of work, not a highlight reel."
       description="Pulled live from the public GitHub API, client-side — this section has no backend."
+      icon={GitHubIcon}
     >
       <GitHubDashboard />
     </SectionShell>

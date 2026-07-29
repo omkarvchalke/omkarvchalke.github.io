@@ -1,3 +1,4 @@
+import { Share2 } from "lucide-react";
 import { technologies } from "@/content/technologies";
 import { technologyCooccurrence } from "@/content/graph";
 import { EmptyState } from "@/components/empty-state";
@@ -11,6 +12,8 @@ export function EcosystemSection() {
       eyebrow="Technology Ecosystem"
       title="How everything connects."
       description="Edges here aren't curated — they're computed from technologies that actually shipped together in the same project or role. Hover a node."
+      icon={Share2}
+      tone="tint"
     >
       {technologies.length > 0 ? (
         <EcosystemGraph

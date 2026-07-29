@@ -1,3 +1,4 @@
+import { User } from "lucide-react";
 import { about } from "@/content/about";
 import { EmptyState } from "@/components/empty-state";
 import { Reveal } from "@/components/reveal";
@@ -24,6 +25,7 @@ export function AboutSection() {
       eyebrow="About"
       title="How I got here, and how I think about building software."
       description="Not a resume — the reasoning behind the work."
+      icon={User}
     >
       <div className="grid max-w-3xl gap-14">
         <Reveal>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Boxes } from "lucide-react";
 import { projects } from "@/content/projects";
 import { EmptyState } from "@/components/empty-state";
 import { Expandable, ExpandChevron } from "@/components/expandable";
@@ -18,6 +19,8 @@ export function ArchitectureSection() {
       eyebrow="System Architecture Gallery"
       title="Interactive diagrams of every major system."
       description="Services, APIs, queues, databases, and cloud — hover any component for what it actually does."
+      icon={Boxes}
+      tone="tint"
     >
       {diagrammed.length > 0 ? (
         <div className="flex flex-col gap-4">

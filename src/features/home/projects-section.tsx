@@ -1,13 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Search } from "lucide-react";
+import { ArrowUpRight, FolderGit2, Search } from "lucide-react";
 import { projects } from "@/content/projects";
 import { technologiesForProject, experienceForProject } from "@/content/graph";
 import type { Discipline, Project } from "@/content/types";
+import { DISCIPLINE_ICONS } from "@/components/category-icons";
 import { EmptyState } from "@/components/empty-state";
 import { Expandable, ExpandChevron } from "@/components/expandable";
 import { Reveal } from "@/components/reveal";
+import { TechBadge } from "@/components/tech-badge";
 import { GitHubIcon } from "@/components/brand-icons";
 import { SectionShell } from "./section-shell";
 import { cn } from "@/lib/utils";
@@ -127,13 +129,7 @@ function ProjectBody({ project }: { project: Project }) {
         {tech.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {tech.map((t) => (
-              <a
-                key={t.slug}
-                href={`#${t.slug}`}
-                className="border-border text-muted-foreground hover:border-primary hover:text-primary rounded-md border px-2 py-0.5 font-mono text-[11px] transition-colors"
-              >
-                {t.name}
-              </a>
+              <TechBadge key={t.slug} technology={t} href={`#${t.slug}`} />
             ))}
           </div>
         )}
@@ -185,6 +181,7 @@ export function ProjectsSection() {
       eyebrow="Projects"
       title="Case studies, not cards."
       description="Every project follows the same template — problem, architecture, tradeoffs, metrics, lessons. Click one to expand it."
+      icon={FolderGit2}
     >
       {projects.length === 0 ? (
         <EmptyState message="Projects pending — see docs/content/INTAKE.md" />
@@ -214,21 +211,25 @@ export function ProjectsSection() {
               >
                 All
               </button>
-              {disciplinesInUse.map((d) => (
-                <button
-                  key={d}
-                  type="button"
-                  onClick={() => setDiscipline(d === discipline ? null : d)}
-                  className={cn(
-                    "rounded-full border px-3 py-1 font-mono text-xs transition-colors",
-                    discipline === d
-                      ? "border-primary text-primary"
-                      : "border-border text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {DISCIPLINE_LABELS[d]}
-                </button>
-              ))}
+              {disciplinesInUse.map((d) => {
+                const Icon = DISCIPLINE_ICONS[d];
+                return (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => setDiscipline(d === discipline ? null : d)}
+                    className={cn(
+                      "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-xs transition-colors",
+                      discipline === d
+                        ? "border-primary text-primary"
+                        : "border-border text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <Icon className="size-3" aria-hidden />
+                    {DISCIPLINE_LABELS[d]}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

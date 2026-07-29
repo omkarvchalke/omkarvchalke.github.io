@@ -5,6 +5,7 @@ import type { Experience } from "@/content/types";
 import { getTechnology, projectsForExperience } from "@/content/graph";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
+import { TechBadge } from "@/components/tech-badge";
 
 function formatRange(start: string, end?: string) {
   const fmt = (iso: string) => {
@@ -139,12 +140,7 @@ function ExperienceEntry({ role, index }: { role: Experience; index: number }) {
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {tech.map((t) => (
-                      <span
-                        key={t!.slug}
-                        className="border-border text-muted-foreground rounded-md border px-2 py-0.5 font-mono text-[11px]"
-                      >
-                        {t!.name}
-                      </span>
+                      <TechBadge key={t!.slug} technology={t!} />
                     ))}
                   </div>
                 </div>
