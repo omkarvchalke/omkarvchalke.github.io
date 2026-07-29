@@ -1,4 +1,11 @@
 import type { Achievement } from "./types";
 
-// Real achievements land here in Phase 5 content pass.
-export const achievements: Achievement[] = [];
+// PLACEHOLDER CONTENT — replace with real achievements via docs/content/INTAKE.md.
+export const achievements: Achievement[] = [
+  {
+    slug: "placeholder-achievement",
+    title: "[Award / Certification Name]",
+    description: "[Placeholder — replace with a real achievement.]",
+    date: "2024-01",
+  },
+];

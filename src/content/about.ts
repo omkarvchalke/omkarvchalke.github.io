@@ -11,11 +11,26 @@ export interface AboutContent {
   timeline: TimelineEntry[];
 }
 
-// Real story/philosophy/timeline land here in your Phase 5 content pass —
-// see docs/content/INTAKE.md. The About page renders an honest empty state
-// until this is filled in.
+// PLACEHOLDER CONTENT — replace with the real thing via docs/content/INTAKE.md.
+// Bracketed fields are literal placeholders, not real claims.
 export const about: AboutContent = {
-  story: "",
-  philosophy: "",
-  timeline: [],
+  story:
+    "[Placeholder — replace with your real story.] I've been drawn to systems that connect pieces most people treat as separate: a data pipeline, the model sitting on top of it, and the interface someone actually uses. That pattern shows up across the projects on this site — a RAG chatbot with its own retrieval pipeline, an intrusion-detection API with an explainability layer built in, a microservices backend built specifically to practice service-to-service architecture.",
+  philosophy:
+    "[Placeholder — replace with your real philosophy.] The smallest system that actually solves the problem beats the most impressive one. Most of the engineering calls documented in these case studies — a cascade instead of a single classifier, a vector index inside the existing database instead of a separate service, a time-aware train/test split instead of a random one — come from that same instinct: pick the defensible choice and document why.",
+  timeline: [
+    {
+      date: "[20XX–20XX]",
+      title: "[Degree] in [Field], [University Name]",
+      description: "[Placeholder — replace with real education details.]",
+      category: "education",
+    },
+    {
+      date: "[20XX–Present]",
+      title: "[Job Title], [Company Name]",
+      description:
+        "[Placeholder — replace with real role details; full history lives on the Experience page.]",
+      category: "career",
+    },
+  ],
 };

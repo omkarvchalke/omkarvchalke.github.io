@@ -1,5 +1,137 @@
 import type { Technology } from "./types";
 
-// Confirmed tech stack lands here in Phase 5, once the real project/experience
-// content is in and we know which technologies actually need graph nodes.
-export const technologies: Technology[] = [];
+export const technologies: Technology[] = [
+  {
+    slug: "typescript",
+    name: "TypeScript",
+    category: "language",
+    disciplines: ["backend", "frontend"],
+  },
+  {
+    slug: "python",
+    name: "Python",
+    category: "language",
+    disciplines: ["backend", "data", "ai"],
+  },
+  {
+    slug: "java",
+    name: "Java",
+    category: "language",
+    disciplines: ["backend"],
+  },
+  {
+    slug: "r",
+    name: "R",
+    category: "language",
+    disciplines: ["data", "research"],
+  },
+  {
+    slug: "nextjs",
+    name: "Next.js",
+    category: "framework",
+    disciplines: ["frontend", "backend"],
+  },
+  {
+    slug: "react",
+    name: "React",
+    category: "framework",
+    disciplines: ["frontend"],
+  },
+  {
+    slug: "tailwindcss",
+    name: "Tailwind CSS",
+    category: "framework",
+    disciplines: ["frontend"],
+  },
+  {
+    slug: "fastapi",
+    name: "FastAPI",
+    category: "framework",
+    disciplines: ["backend"],
+  },
+  {
+    slug: "langgraph",
+    name: "LangGraph",
+    category: "framework",
+    disciplines: ["ai", "backend"],
+  },
+  {
+    slug: "springboot",
+    name: "Spring Boot",
+    category: "framework",
+    disciplines: ["backend"],
+  },
+  {
+    slug: "postgresql",
+    name: "PostgreSQL",
+    category: "database",
+    disciplines: ["databases", "backend"],
+  },
+  {
+    slug: "pgvector",
+    name: "pgvector",
+    category: "database",
+    disciplines: ["databases", "ai"],
+  },
+  {
+    slug: "catboost",
+    name: "CatBoost",
+    category: "framework",
+    disciplines: ["ai", "data"],
+  },
+  {
+    slug: "scikit-learn",
+    name: "scikit-learn",
+    category: "framework",
+    disciplines: ["ai", "data"],
+  },
+  {
+    slug: "shap",
+    name: "SHAP",
+    category: "tooling",
+    disciplines: ["ai", "data"],
+  },
+  {
+    slug: "tensorflow",
+    name: "TensorFlow",
+    category: "framework",
+    disciplines: ["ai"],
+  },
+  {
+    slug: "opencv",
+    name: "OpenCV",
+    category: "framework",
+    disciplines: ["ai"],
+  },
+  {
+    slug: "tesseract",
+    name: "Tesseract OCR",
+    category: "tooling",
+    disciplines: ["ai"],
+  },
+  {
+    slug: "docker",
+    name: "Docker",
+    category: "tooling",
+    disciplines: ["cloud", "backend"],
+  },
+  {
+    slug: "eureka",
+    name: "Eureka",
+    category: "infrastructure",
+    disciplines: ["backend", "architecture"],
+  },
+  {
+    slug: "tableau",
+    name: "Tableau",
+    category: "tooling",
+    disciplines: ["data"],
+  },
+  {
+    slug: "raspberrypi",
+    name: "Raspberry Pi",
+    category: "platform",
+    disciplines: ["backend"],
+  },
+  { slug: "groq", name: "Groq", category: "platform", disciplines: ["ai"] },
+];
