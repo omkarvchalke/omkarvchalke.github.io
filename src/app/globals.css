@@ -301,6 +301,17 @@
     0 1px 0 0 color-mix(in srgb, var(--foreground) 5%, transparent) inset,
     0 16px 32px -24px rgba(0, 0, 0, 0.55);
 }
+
+/* Nav's link list stays scrollable (overflow-x-auto, for narrow viewports
+   or a long link row) but the OS/browser scrollbar UI itself is hidden —
+   the fade-out mask already communicates "more to scroll" on its own. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 .surface-card.accent-copper:hover {
   border-color: color-mix(in srgb, var(--copper) 45%, var(--border));
   box-shadow:

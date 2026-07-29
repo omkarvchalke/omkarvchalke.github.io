@@ -52,7 +52,7 @@ export function SiteNav() {
         >
           OVC
         </a>
-        <ul className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)] sm:gap-1 sm:[mask-image:none]">
+        <ul className="no-scrollbar flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)] sm:gap-1 sm:[mask-image:none]">
           {LINKS.map((link) => {
             const isActive = activeId === link.id;
             return (
