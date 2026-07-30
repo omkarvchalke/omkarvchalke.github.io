@@ -20,9 +20,16 @@ export const about: AboutContent = {
     "[Placeholder — replace with your real philosophy.] The smallest system that actually solves the problem beats the most impressive one. Most of the engineering calls documented in these case studies — a cascade instead of a single classifier, a vector index inside the existing database instead of a separate service, a time-aware train/test split instead of a random one — come from that same instinct: pick the defensible choice and document why.",
   timeline: [
     {
-      date: "[20XX–20XX]",
-      title: "[Degree] in [Field], [University Name]",
-      description: "[Placeholder — replace with real education details.]",
+      date: "2017–2021",
+      title: "B.E. in Information Technology, University of Mumbai",
+      description: "GPA: 3.46/4.00.",
+      category: "education",
+    },
+    {
+      date: "2024–2026",
+      title:
+        "M.S. in Information Management, University of Illinois Urbana-Champaign",
+      description: "GPA: 3.88/4.00.",
       category: "education",
     },
     {
