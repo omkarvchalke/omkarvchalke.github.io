@@ -21,28 +21,6 @@ export const experience: Experience[] = [
     relatedProjectSlugs: [],
   },
   {
-    slug: "stu-dio-illinois",
-    company: "The stu/dio at Illinois",
-    role: "Project Manager",
-    startDate: "2025-08",
-    endDate: "2026-05",
-    overview:
-      "Spearheading the VR Parkinson's Project at The stu/dio at Illinois — an immersive, data-driven healthcare simulation product taken from concept to prototype.",
-    challenges: [],
-    responsibilities: [
-      "Coordinating cross-functional teams of developers, designers, and researchers to deliver the VR Parkinson's Project from concept to prototype.",
-      "Managing Agile sprints, backlog prioritization, and stakeholder reviews using JIRA, ensuring timely delivery, scope alignment, and continuous integration across parallel workstreams.",
-      "Translating complex technical and research requirements into actionable development tasks, bridging communication between engineering, design, and academic teams.",
-    ],
-    impact: [
-      "Drove execution through metrics-based sprint planning, risk mitigation, and change management, improving delivery efficiency and cross-team collaboration outcomes.",
-    ],
-    techSlugs: ["jira"],
-    disciplines: ["research"],
-    metrics: [],
-    relatedProjectSlugs: [],
-  },
-  {
     slug: "business-intelligence-group-uiuc",
     company: "Business Intelligence Group (UIUC)",
     role: "Technical Consultant",

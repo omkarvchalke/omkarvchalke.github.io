@@ -147,7 +147,9 @@ export interface LeadershipEntry {
   category: string;
   role: string;
   organization: string;
-  description: string;
+  /** One or more bullet points — a single-item array renders as plain
+   * prose, more than one renders as a bulleted list. */
+  description: string[];
   dateRange?: string;
 }
 

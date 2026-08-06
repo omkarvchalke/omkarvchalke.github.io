@@ -152,10 +152,4 @@ export const technologies: Technology[] = [
     category: "tooling",
     disciplines: ["data"],
   },
-  {
-    slug: "jira",
-    name: "JIRA",
-    category: "tooling",
-    disciplines: [],
-  },
 ];

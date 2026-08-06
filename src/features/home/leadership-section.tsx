@@ -35,9 +35,23 @@ export function LeadershipSection() {
               <h3 className="font-medium">
                 {entry.role} · {entry.organization}
               </h3>
-              <p className="text-muted-foreground text-sm text-pretty">
-                {entry.description}
-              </p>
+              {entry.description.length === 1 ? (
+                <p className="text-muted-foreground text-sm text-pretty">
+                  {entry.description[0]}
+                </p>
+              ) : (
+                <ul className="flex flex-col gap-1.5">
+                  {entry.description.map((line) => (
+                    <li
+                      key={line}
+                      className="text-muted-foreground flex gap-2 text-sm"
+                    >
+                      <span className="bg-border mt-2 size-1 shrink-0 rounded-full" />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </Reveal>
           ))}
         </div>
