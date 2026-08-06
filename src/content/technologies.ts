@@ -134,4 +134,28 @@ export const technologies: Technology[] = [
     disciplines: ["backend"],
   },
   { slug: "groq", name: "Groq", category: "platform", disciplines: ["ai"] },
+  {
+    slug: "aws",
+    name: "AWS",
+    category: "platform",
+    disciplines: ["cloud", "backend", "data"],
+  },
+  {
+    slug: "pandas",
+    name: "Pandas",
+    category: "framework",
+    disciplines: ["data"],
+  },
+  {
+    slug: "fuzzywuzzy",
+    name: "FuzzyWuzzy",
+    category: "tooling",
+    disciplines: ["data"],
+  },
+  {
+    slug: "jira",
+    name: "JIRA",
+    category: "tooling",
+    disciplines: [],
+  },
 ];
