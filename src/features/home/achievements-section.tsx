@@ -41,9 +41,11 @@ export function AchievementsSection() {
                   {achievement.description}
                 </p>
               </div>
-              <span className="text-muted-foreground shrink-0 font-mono text-xs">
-                {achievement.date}
-              </span>
+              {achievement.date && (
+                <span className="text-muted-foreground shrink-0 font-mono text-xs">
+                  {achievement.date}
+                </span>
+              )}
             </Reveal>
           ))}
         </ul>

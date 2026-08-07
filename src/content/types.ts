@@ -135,7 +135,7 @@ export interface Achievement {
   slug: string;
   title: string;
   description: string;
-  date: string; // ISO yyyy-mm
+  date?: string; // ISO yyyy-mm — omit when the date isn't known
   url?: string;
 }
 
