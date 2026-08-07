@@ -37,4 +37,10 @@ export const achievements: Achievement[] = [
     description:
       "Coursework covering IoT systems combined with machine learning techniques in Python.",
   },
+  {
+    slug: "databricks-data-engineering-certificate",
+    title: "Data Engineering Certificate, Databricks",
+    description:
+      "Certification covering data engineering on the Databricks platform.",
+  },
 ];
